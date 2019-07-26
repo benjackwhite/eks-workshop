@@ -1,5 +1,5 @@
 variable "common_tags" {
-  type    = "map"
+  type    = map(string)
   default = {}
 }
 
@@ -16,11 +16,11 @@ variable "vpc_id" {
 }
 
 variable "public_subnets" {
-  type = "list"
+  type = list(string)
 }
 
 variable "private_subnets" {
-  type = "list"
+  type = list(string)
 }
 
 variable "worker_instance_type" {
@@ -46,3 +46,4 @@ variable "write_aws_auth_config" {
 variable "write_kubeconfig" {
   default = false
 }
+
