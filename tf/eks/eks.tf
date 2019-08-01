@@ -91,7 +91,7 @@ EOF
 
 # NOTE: This policy allows use of SSM to connect to the nodes. Uncomment if needed
 resource "aws_iam_role_policy_attachment" "workers_AmazonEC2RoleforSSM" {
-policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
-role       = module.eks.worker_iam_role_name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
+  role       = module.eks.worker_iam_role_name
 }
 
