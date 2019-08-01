@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: external-auth-oauth2
+  namespace: kube-system
+spec:
+  rules:
+  - host: __INGRESS_HOST__
+    http:
+      paths:
+      - backend:
+          serviceName: kubernetes-dashboard
+          servicePort: 80
+        path: /
