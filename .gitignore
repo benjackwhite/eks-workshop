@@ -2,3 +2,4 @@
 .vscode/
 local/
 *.tfstate.backup
+**/*kube_config

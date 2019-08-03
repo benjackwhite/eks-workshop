@@ -14,19 +14,19 @@ echo "
 apiVersion: v1
 kind: Config
 clusters:
-- name: default-cluster
+- name: eks-workshop-cluster
   cluster:
     certificate-authority-data: ${ca}
     server: ${server}
 contexts:
-- name: default-context
+- name: eks-workshop
   context:
-    cluster: default-cluster
+    cluster: eks-workshop-cluster
     namespace: default
-    user: default-user
-current-context: default-context
+    user: eks-workshop-user
+current-context: eks-workshop
 users:
-- name: default-user
+- name: eks-workshop-user
   user:
     token: ${token}
 "
