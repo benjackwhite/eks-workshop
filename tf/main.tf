@@ -3,6 +3,12 @@ provider "aws" {
   region  = "eu-west-1"
 }
 
+
+provider "kubernetes" {
+  config_context = "eks-workshop"
+}
+
+
 locals {
   domain_name = "eks-workshop.edge-labs.com"
   common_tags = {
@@ -75,13 +81,20 @@ resource "aws_route53_record" "ns_record" {
   records = aws_route53_zone.main.name_servers
 }
 
+module "eks" {
+  source      = "./eks"
+  common_tags = local.common_tags
 
+  vpc_id          = data.aws_vpc.playground.id
+  private_subnets = data.aws_subnet_ids.private_subnets.ids
+  public_subnets  = data.aws_subnet_ids.public_subnets.ids
+}
 
-# module "eks" {
-#   source      = "./eks"
-#   common_tags = local.common_tags
+module "k8s" {
+  source = "./k8s"
 
-#   vpc_id          = data.aws_vpc.playground.id
-#   private_subnets = data.aws_subnet_ids.private_subnets.ids
-#   public_subnets  = data.aws_subnet_ids.public_subnets.ids
-# }
+  zone_id          = aws_route53_zone.main.id
+  main_domain      = local.domain_name
+  cluster_endpoint = module.eks.cluster_endpoint
+  certificate_arn  = aws_acm_certificate.cert.arn
+}

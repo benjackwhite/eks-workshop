@@ -28,15 +28,15 @@ variable "worker_instance_type" {
 }
 
 variable "worker_asg_min_size" {
-  default = 3
+  default = 1
 }
 
 variable "worker_asg_max_size" {
-  default = 10
+  default = 3
 }
 
 variable "worker_asg_desired_capacity" {
-  default = 3
+  default = 1
 }
 
 variable "write_aws_auth_config" {
