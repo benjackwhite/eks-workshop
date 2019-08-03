@@ -104,6 +104,7 @@ resource "kubernetes_deployment" "kubernetes_dashboard" {
       spec {
         volume {
           name = "tmp-volume"
+          empty_dir {}
         }
 
         automount_service_account_token = true

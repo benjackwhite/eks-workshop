@@ -25,6 +25,7 @@ resource "kubernetes_deployment" "monitoring_influxdb" {
       spec {
         volume {
           name = "influxdb-storage"
+          empty_dir {}
         }
 
         automount_service_account_token = true
