@@ -24,7 +24,7 @@ variable "private_subnets" {
 }
 
 variable "worker_instance_type" {
-  default = "t3.small"
+  default = "t3.medium"
 }
 
 variable "worker_asg_min_size" {
@@ -32,11 +32,11 @@ variable "worker_asg_min_size" {
 }
 
 variable "worker_asg_max_size" {
-  default = 3
+  default = 6
 }
 
 variable "worker_asg_desired_capacity" {
-  default = 1
+  default = 3
 }
 
 variable "write_aws_auth_config" {

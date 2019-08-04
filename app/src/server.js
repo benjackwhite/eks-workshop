@@ -10,8 +10,8 @@ const message = process.env.MESSAGE || "Hello World!";
 let isCrashed = false;
 
 app.get("/", (req, res) => {
-  res.json({
-    status: "ok",
+  res.status(isCrashed ? 500 : 200).json({
+    status: isCrashed ? "ON FIRE!" : "ok",
     message: message,
     info: {
       platform: os.type(),
