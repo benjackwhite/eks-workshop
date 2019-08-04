@@ -7,7 +7,7 @@ const { getMessages, addMessage } = require("./messages");
 const port = process.env.PORT || 8080;
 
 const message = process.env.MESSAGE || "Hello World!";
-let isCrashed = false;
+let isCrashed = process.env.HAS_BUGS == "true";
 
 app.get("/", (req, res) => {
   res.status(isCrashed ? 500 : 200).json({
