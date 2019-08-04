@@ -1,13 +1,14 @@
 {
-  "name": "hello-kubernetes",
+  "name": "kubernetes-workshop-example-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Example app for working with Kubernetes workshop",
   "main": "index.js",
   "scripts": {
     "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
+  "repository": "https://github.com/benjackwhite/eks-workshop",
   "dependencies": {
     "express": "^4.17.1",
     "redis": "^2.8.0"
