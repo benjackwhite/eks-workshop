@@ -7,7 +7,7 @@ services:
     links:
     - redis
     environment:
-      MESSAGE: 'yoyo" wwsas'
+      MESSAGE: Hello World!
       REDIS_URL: redis://redis:6379
   redis:
     image: redis
