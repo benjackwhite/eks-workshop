@@ -9,6 +9,10 @@ const port = process.env.PORT || 8080;
 const message = process.env.MESSAGE || "Hello World!";
 let isCrashed = process.env.HAS_BUGS == "true";
 
+console.log(`Starting app with env: ${JSON.stringify(process.env, null, 2)}`);
+console.log(`message = ${message}`);
+console.log(`isCrashed = ${isCrashed}`);
+
 app.get("/", (req, res) => {
   res.status(isCrashed ? 500 : 200).json({
     status: isCrashed ? "ON FIRE!" : "ok",
