@@ -43,9 +43,9 @@ resource "kubernetes_cluster_role" "workshop_administrator_cluster_role" {
   }
 
   rule {
-    verbs      = ["get", "list", "watch"]
+    verbs      = ["get", "list"]
     api_groups = [""]
-    resources  = ["nodes", "namespaces", "persistentvolumes"]
+    resources  = ["*"]
   }
 }
 
