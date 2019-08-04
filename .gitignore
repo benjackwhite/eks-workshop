@@ -4,3 +4,4 @@ local/
 *.tfstate.backup
 *.tfstate.lock.info
 **/*kube_config
+**/node_modules

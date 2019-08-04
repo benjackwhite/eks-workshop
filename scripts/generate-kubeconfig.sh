@@ -2,13 +2,12 @@
 set -e
 
 # your server name goes here
-server=$1
-# the name of the secret containing the service account token goes here
-name=$2
+server=$(kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}')
+admin_secret_name=$(kubectl get secrets -o name | grep workshop-administrator-token)
 
-ca=$(kubectl get secret/$name -o jsonpath='{.data.ca\.crt}')
-token=$(kubectl get secret/$name -o jsonpath='{.data.token}' | base64 --decode)
-namespace=$(kubectl get secret/$name -o jsonpath='{.data.namespace}' | base64 --decode)
+ca=$(kubectl get $admin_secret_name -o jsonpath='{.data.ca\.crt}')
+token=$(kubectl get $admin_secret_name -o jsonpath='{.data.token}' | base64 --decode)
+namespace=$(kubectl get $admin_secret_name -o jsonpath='{.data.namespace}' | base64 --decode)
 
 echo "
 apiVersion: v1
