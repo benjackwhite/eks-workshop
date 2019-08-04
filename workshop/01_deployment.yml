@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: paulbouwer/hello-kubernetes:1.5
+        image: netlight/kubernetes-workshop-example:latest
         ports:
           - name: http
             containerPort: 8080
