@@ -23,24 +23,24 @@ app.get("/", (req, res) => {
 
 // Health and liveness endpoints
 app.get("/ready", (req, res) => {
-  if (isCrashed) return;
+  if (isCrashed) return res.status(500).send("");
   res.send("Ok");
 });
 app.get("/healthy", (req, res) => {
-  if (isCrashed) return;
+  if (isCrashed) return res.status(500).send("");
   res.send("Ok");
 });
 
 // Endpoint for simulating a disaster scenario
 app.get("/crash", (req, res) => {
-  if (isCrashed) return;
+  if (isCrashed) return res.status(500).send("");
   res.send("Uh oh...");
   isCrashed = true;
 });
 
 // Redis based endpoint
 app.get("/messages", async (req, res) => {
-  if (isCrashed) return;
+  if (isCrashed) return res.status(500).send("");
 
   const messages = await getMessages();
   res.json({
@@ -50,7 +50,7 @@ app.get("/messages", async (req, res) => {
 });
 
 app.get("/messages/:id", async (req, res) => {
-  if (isCrashed) return;
+  if (isCrashed) return res.status(500).send("");
 
   const message = await addMessage(req.params.id);
   res.json({
