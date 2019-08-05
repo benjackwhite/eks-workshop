@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{PLACEHOLDER}}
+  name: my-app-redis
 spec:
-  serviceName: {{PLACEHOLDER}}
+  serviceName: my-app-redis
   replicas: 1
   selector:
     matchLabels:
-      app: {{PLACEHOLDER}}
+      app: my-app-redis
   template:
     metadata:
       labels:
-        app: {{PLACEHOLDER}}
+        app: my-app-redis
     spec:
       containers:
       - name: redis
@@ -46,9 +46,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{PLACEHOLDER}}
+  name: my-app-redis
   labels:
-    app: {{PLACEHOLDER}}
+    app: my-app-redis
 spec:
   type: ClusterIP
   ports:
@@ -56,4 +56,4 @@ spec:
       targetPort: redis
       name: redis
   selector:
-    app: {{PLACEHOLDER}}
+    app: my-app-redis

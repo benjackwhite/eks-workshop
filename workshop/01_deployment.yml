@@ -1,20 +1,43 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{PLACEHOLDER}}
+  name: my-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{PLACEHOLDER}}
+      app: my-app
   template:
     metadata:
       labels:
-        app: {{PLACEHOLDER}}
+        app: my-app
+        rollout: v1
     spec:
       containers:
       - name: api
-        image: netlight/kubernetes-workshop-example:latest
+        image: netlight/kubernetes-workshop-example-app:latest
+        env:
+          - name: MESSAGE
+            value: "Hello World!"
+          - name: HAS_BUGS
+            value: "false"
+          - name: REDIS_URL
+            value: redis://my-app-redis:6379
         ports:
           - name: http
             containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: http
+        livenessProbe:
+          httpGet:
+            path: /healthy
+            port: http
+        resources:
+          limits:
+            cpu: "250m"
+            memory: 128Mi
+          requests:
+            cpu: "100m"
+            memory: 64Mi

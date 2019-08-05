@@ -1,15 +1,15 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{PLACEHOLDER}}
+  name: my-app
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: {{PLACEHOLDER}}.eks-workshop.edge-labs.com
+  - host: my-app.eks-workshop.edge-labs.com
     http:
       paths:
       - path: /
         backend:
-          serviceName: {{PLACEHOLDER}}
+          serviceName: my-app
           servicePort: http

@@ -23,6 +23,7 @@ variable "private_subnets" {
   type = list(string)
 }
 
+# Number of pods is limited by instance type: https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
 variable "worker_instance_type" {
   default = "t3.medium"
 }
