@@ -10,7 +10,7 @@
   "license": "ISC",
   "repository": "https://github.com/benjackwhite/eks-workshop",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.20.0",
     "redis": "^2.8.0"
   }
 }
